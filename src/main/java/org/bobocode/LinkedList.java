@@ -20,7 +20,24 @@ public class LinkedList<T> {
   }
 
   public void remove(T element) {
-    // TODO: implement remove method
+    if (head.element.equals(element)) {
+      if (size == 1) {
+        clear();
+      } else {
+        head = head.next;
+      }
+    }
+    Node<T> current = head;
+    while (current.next != null) {
+      if (current.next.element.equals(element)) {
+        if (current.next.next != null) {
+          current.next = current.next.next;
+        } else {
+          tail = current;
+        }
+      }
+      current = current.next;
+    }
   }
 
   public boolean isEmpty() {
